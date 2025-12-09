@@ -1,0 +1,101 @@
+/**
+ * Componente CollectionsSection - Sección principal de colecciones
+ *
+ * Muestra:
+ * - Título "Colecciones"
+ * - Logos de las colecciones (C3M, 2BC, 2BD)
+ * - Eslogan de la marca
+ *
+ * Esta sección ocupa el espacio central de la página
+ */
+function CollectionsSection() {
+  // 🎨 AQUÍ PUEDES CAMBIAR EL TAMAÑO DEL TÍTULO "COLECCIONES"
+  // Opciones: text-4xl (36px), text-5xl (48px), text-6xl (60px), text-7xl (72px), text-8xl (96px), text-9xl (128px)
+  const tituloSize = "text-0xl"; // 👈 Cambia este valor para ajustar el tamaño del título
+
+  // 📍 AQUÍ PUEDES MOVER EL TÍTULO HACIA ABAJO (desde arriba de la pantalla)
+  // Opciones: top-16 (64px), top-20 (80px), top-24 (96px), top-32 (128px), top-40 (160px), top-48 (192px)
+  const tituloPosicion = "top-40"; // 👈 Cambia este valor para bajar el título desde arriba
+
+  // 🎨 TAMAÑOS INDIVIDUALES DE LOS LOGOS
+  // Opciones: w-32 (128px), w-40 (160px), w-48 (192px), w-56 (224px), w-64 (256px), w-72 (288px), w-80 (320px)
+  const logo1Size = "w-20 h-40"; // 👈 Tamaño del logo C3M (izquierda)
+  const logo2Size = "w-20 h-40"; // 👈 Tamaño del logo 2BC (centro)
+  const logo3Size = "w-20 h-40"; // 👈 Tamaño del logo 2BD (derecha)
+
+  // 📏 ESPACIO ENTRE LOS LOGOS
+  // Opciones: gap-4 (16px), gap-8 (32px), gap-12 (48px), gap-16 (64px), gap-20 (80px), gap-24 (96px)
+  const espacioEntreLogos = "gap-5"; // 👈 Espacio entre los logos
+
+  // 🎯 POSICIÓN INDIVIDUAL DEL LOGO 1 (C3M - Izquierda)
+  // Horizontal: -ml-X (izquierda), ml-0 (centro), ml-X (derecha)
+  // Vertical: -mt-X (arriba), mt-0 (centro), mt-X (abajo)
+  // Opciones: 0, 2, 4, 8, 12, 16, 20, 24, 32, 40
+  const logo1PosX = "ml-0"; // 👈 Mover horizontal (- = izquierda, + = derecha)
+  const logo1PosY = "mt-0"; // 👈 Mover vertical (- = arriba, + = abajo)
+
+  // 🎯 POSICIÓN INDIVIDUAL DEL LOGO 2 (2BD BLACKLIST - Centro) ⭐ PRINCIPAL
+  const logo2PosX = "ml-0"; // 👈 Mover horizontal (ml-X derecha, -ml-X izquierda)
+  const logo2PosY = "-mt-4"; // 👈 Mover vertical (-mt-X sube, mt-X baja) | Opciones: -mt-2, -mt-4, -mt-8, -mt-12, -mt-16
+
+  // 🎯 POSICIÓN INDIVIDUAL DEL LOGO 3 (2BD - Derecha)
+  const logo3PosX = "ml-0"; // 👈 Mover horizontal
+  const logo3PosY = "mt-0"; // 👈 Mover vertical
+
+  // 📝 POSICIÓN DEL ESLOGAN "MÁS QUE UNA MARCA" (desde ABAJO de la pantalla)
+  // Opciones: bottom-4 (16px), bottom-8 (32px), bottom-12 (48px), bottom-16 (64px), bottom-20 (80px), bottom-24 (96px)
+  const esloganPosicion = "bottom-16"; // 👈 Cambia este valor para mover el eslogan desde abajo
+
+  return (
+    // flex-1: ocupa espacio disponible | flex flex-col: columna vertical
+    // items-center: centra horizontalmente | justify-center: centra verticalmente
+    // text-center: texto centrado | px-8: padding horizontal 32px | relative: para posicionar el título
+    <section className="relative flex-1 flex flex-col items-center justify-center text-center px-8">
+
+      {/* Título principal de la sección - POSICIÓN ABSOLUTA */}
+      {/* absolute: se posiciona independiente | left-1/2: centrado horizontal */}
+      {/* -translate-x-1/2: ajusta el centrado perfecto */}
+      {/* font-bold: negrita | drop-shadow: sombra personalizada */}
+      <h2 className={`absolute ${tituloPosicion} left-1/2 -translate-x-1/2 ${tituloSize} font-bold drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]`}>
+        Colecciones
+      </h2>
+
+      {/* Contenedor de los logos de colecciones */}
+      {/* flex: horizontal | mb-16: margen inferior 64px */}
+      <div className={`flex ${espacioEntreLogos} mb-16`}>
+
+        {/* Logo 1: 2BC (Izquierda) */}
+        <img
+          src="/logos/LOGO2.png"
+          alt="2BC"
+          className={`${logo1Size} ${logo1PosX} ${logo1PosY} cursor-pointer transition-transform hover:scale-110 drop-shadow-2xl object-contain`}
+        />
+
+        {/* Logo 2: 2BD BLACKLIST con 2 bolitas (Centro) ⭐ PRINCIPAL */}
+        <img
+          src="/logos/logo3.png"
+          alt="2BD BLACKLIST"
+          className={`${logo2Size} ${logo2PosX} ${logo2PosY} cursor-pointer transition-transform hover:scale-110 drop-shadow-2xl object-contain`}
+        />
+
+        {/* Logo 3: C3M (Derecha) */}
+        <img
+          src="/logos/logo4.png"
+          alt="C3M"
+          className={`${logo3Size} ${logo3PosX} ${logo3PosY} cursor-pointer transition-transform hover:scale-110 drop-shadow-2xl object-contain`}
+        />
+      </div>
+
+      {/* Eslogan de la marca - POSICIÓN ABSOLUTA desde abajo */}
+      {/* absolute: posición independiente | left-1/2: centrado horizontal | -translate-x-1/2: ajuste de centrado */}
+      {/* text-5xl: 48px | font-bold: negrita | italic: cursiva */}
+      {/* leading-tight: espaciado ajustado | drop-shadow: sombra negra 90% */}
+      <div className={`absolute ${esloganPosicion} left-1/2 -translate-x-1/2 text-5xl font-bold italic leading-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]`}>
+        <p>MÁS QUE UNA</p>
+        <p>MARCA</p>
+      </div>
+    </section>
+  );
+}
+
+export default CollectionsSection;
