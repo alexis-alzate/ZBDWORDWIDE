@@ -5,6 +5,7 @@
 - [className vs ID](#classname-vs-id)
 - [Cómo funcionan las clases en React](#cómo-funcionan-las-clases-en-react)
 - [Tailwind CSS - Guía Rápida](#tailwind-css---guía-rápida)
+- [Valores Personalizados en Tailwind con Corchetes](#valores-personalizados-en-tailwind-con-corchetes) ⭐ NUEVO
 - [Props en React](#props-en-react)
 - [Trucos y Tips](#trucos-y-tips)
 
@@ -289,6 +290,243 @@ transition-transform // Anima transformaciones
 ">
   Click aquí
 </button>
+```
+
+---
+
+## 🎯 Valores Personalizados en Tailwind con Corchetes `[]` ⭐
+
+### ❌ El Problema
+
+Tailwind solo acepta **valores predefinidos**. Si intentas usar un número que no existe, **NO funciona**:
+
+```javascript
+// ❌ ESTO NO FUNCIONA
+const posicion = "mt-15";   // Tailwind NO tiene mt-15
+const posicion = "mt-22";   // Tailwind NO tiene mt-22
+const posicion = "mt-37";   // Tailwind NO tiene mt-37
+const posicion = "w-250";   // Tailwind NO tiene w-250
+```
+
+**Valores predefinidos de Tailwind:**
+- Margin/Padding: `0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64`
+- Width/Height: `0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64, 72, 80, 96`
+
+Si necesitas **15px**, **22px**, **37px**, o **CUALQUIER otro número**, necesitas usar **corchetes**.
+
+---
+
+### ✅ La Solución: Corchetes `[]`
+
+Usa **corchetes `[]`** para valores personalizados:
+
+```javascript
+// ✅ ESTO SÍ FUNCIONA
+const posicion = "-mt-[15px]";  // Sube 15 píxeles
+const posicion = "-mt-[22px]";  // Sube 22 píxeles
+const posicion = "mt-[37px]";   // Baja 37 píxeles
+const ancho = "w-[250px]";      // Ancho de 250 píxeles
+const alto = "h-[175px]";       // Alto de 175 píxeles
+```
+
+---
+
+### 📋 Sintaxis Completa
+
+```javascript
+// FORMATO GENERAL
+[propiedad]-[valor-con-corchetes]
+
+// EJEMPLOS
+-mt-[10px]    // Margin top negativo de 10px (sube)
+mt-[25px]     // Margin top positivo de 25px (baja)
+-ml-[30px]    // Margin left negativo de 30px (mueve izquierda)
+ml-[15px]     // Margin left positivo de 15px (mueve derecha)
+w-[350px]     // Width de 350px
+h-[225px]     // Height de 225px
+text-[19px]   // Tamaño de texto de 19px
+gap-[13px]    // Gap de 13px
+p-[18px]      // Padding de 18px
+```
+
+---
+
+### 🔑 Reglas Importantes
+
+1. **SIEMPRE usa corchetes `[]`** para valores personalizados
+2. **SIEMPRE incluye la unidad** (`px`, `rem`, `%`, etc.) dentro de los corchetes
+3. **Usa `-` antes** de la propiedad para valores negativos (subir, mover izquierda)
+4. **NO uses `-` antes** de la propiedad para valores positivos (bajar, mover derecha)
+
+---
+
+### 💡 Ejemplos Prácticos del Proyecto
+
+#### Ejemplo 1: Posicionar texto "2BD WORLDWIDE" en Header
+
+```javascript
+// Header.jsx
+function Header() {
+  // ✅ PROFESIONAL: Control total con píxeles exactos
+  const textoPosY = "-mt-[50px]"; // Sube EXACTAMENTE 50 píxeles
+
+  return (
+    <h1 className={`relative z-10 ${textoPosY} text-3xl`}>
+      2BD WORLDWIDE
+    </h1>
+  );
+}
+
+// Puedes ajustar al píxel que necesites:
+const textoPosY = "-mt-[15px]";  // Sube 15px
+const textoPosY = "-mt-[27px]";  // Sube 27px
+const textoPosY = "-mt-[43px]";  // Sube 43px
+const textoPosY = "mt-[12px]";   // Baja 12px
+```
+
+#### Ejemplo 2: Posicionar logo central
+
+```javascript
+// Header.jsx
+function Header() {
+  // ✅ Control exacto del logo
+  const logoCentralPosY = "-mt-[25px]"; // Sube 25 píxeles
+
+  return (
+    <div className={`absolute ${logoCentralPosY} z-10`}>
+      <img src="/logo.png" />
+    </div>
+  );
+}
+```
+
+#### Ejemplo 3: Tamaño personalizado de logo
+
+```javascript
+// ✅ Tamaño exacto que quieras
+const logoSize = "w-[175px] h-[175px]";  // 175px × 175px
+const logoSize = "w-[220px] h-[220px]";  // 220px × 220px
+const logoSize = "w-[137px] h-[250px]";  // 137px × 250px (rectangular)
+
+<div className={logoSize}>
+  <img src="/logo.png" />
+</div>
+```
+
+---
+
+### 🎨 Comparación: Valores Predefinidos vs Personalizados
+
+| Necesidad | ❌ No Funciona | ✅ Funciona |
+|-----------|---------------|-------------|
+| Subir 15px | `mt-15` | `-mt-[15px]` |
+| Subir 22px | `mt-22` | `-mt-[22px]` |
+| Bajar 37px | `mt-37` | `mt-[37px]` |
+| Ancho 250px | `w-250` | `w-[250px]` |
+| Tamaño texto 19px | `text-19` | `text-[19px]` |
+| Gap de 13px | `gap-13` | `gap-[13px]` |
+
+---
+
+### 🚀 Unidades Disponibles
+
+Puedes usar **cualquier unidad CSS** dentro de los corchetes:
+
+```javascript
+// PÍXELES
+"-mt-[15px]"
+
+// REM (relativo al font-size raíz)
+"text-[1.5rem]"
+
+// PORCENTAJE
+"w-[75%]"
+
+// VIEWPORT WIDTH
+"w-[50vw]"
+
+// VIEWPORT HEIGHT
+"h-[80vh]"
+
+// EM (relativo al font-size del elemento)
+"p-[2em]"
+```
+
+---
+
+### ⚠️ Errores Comunes
+
+```javascript
+// ❌ ERROR: Sin corchetes
+const posicion = "mt-15";  // NO funciona
+
+// ❌ ERROR: Sin unidad
+const posicion = "-mt-[15]";  // NO funciona
+
+// ❌ ERROR: Espacios dentro de corchetes
+const posicion = "-mt-[ 15px ]";  // NO funciona
+
+// ✅ CORRECTO
+const posicion = "-mt-[15px]";  // SÍ funciona
+```
+
+---
+
+### 📊 Tabla de Referencia Rápida
+
+| Acción | Sintaxis | Ejemplo |
+|--------|----------|---------|
+| **Subir elemento** | `-mt-[Xpx]` | `-mt-[20px]` |
+| **Bajar elemento** | `mt-[Xpx]` | `mt-[30px]` |
+| **Mover izquierda** | `-ml-[Xpx]` | `-ml-[15px]` |
+| **Mover derecha** | `ml-[Xpx]` | `ml-[25px]` |
+| **Ancho personalizado** | `w-[Xpx]` | `w-[200px]` |
+| **Alto personalizado** | `h-[Xpx]` | `h-[150px]` |
+| **Tamaño texto** | `text-[Xpx]` | `text-[18px]` |
+| **Espacio entre elementos** | `gap-[Xpx]` | `gap-[12px]` |
+| **Padding** | `p-[Xpx]` | `p-[16px]` |
+| **Margin** | `m-[Xpx]` | `m-[20px]` |
+
+---
+
+### 🎯 Cuándo Usar Valores Predefinidos vs Personalizados
+
+#### Usa Valores Predefinidos cuando:
+```javascript
+// ✅ El valor existe en Tailwind
+const posicion = "mt-4";   // 16px - existe
+const posicion = "mt-8";   // 32px - existe
+const posicion = "mt-16";  // 64px - existe
+```
+
+**Ventaja:** Código más limpio y consistente con el sistema de diseño de Tailwind.
+
+#### Usa Valores Personalizados cuando:
+```javascript
+// ✅ Necesitas un valor exacto que NO existe
+const posicion = "-mt-[23px]";  // 23px - no existe en Tailwind
+const posicion = "-mt-[47px]";  // 47px - no existe en Tailwind
+const ancho = "w-[275px]";      // 275px - no existe en Tailwind
+```
+
+**Ventaja:** Control profesional al píxel exacto para tu diseño.
+
+---
+
+### 💪 Resumen: El Poder de los Corchetes
+
+✅ Usa **CUALQUIER número** que necesites
+✅ Control **100% profesional** sobre tu diseño
+✅ Ajusta al **píxel exacto**
+✅ No estás limitado a valores predefinidos
+✅ Funciona con **todas las propiedades** de Tailwind
+
+```javascript
+// Antes: Limitado a valores predefinidos
+const posicion = "mt-16";  // Solo puedes usar: 0, 1, 2, 4, 8, 16, 20, 24...
+
+// Ahora: Libertad total
+const posicion = "-mt-[23px]";  // CUALQUIER número que quieras ✨
 ```
 
 ---

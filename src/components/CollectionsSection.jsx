@@ -11,16 +11,28 @@
 function CollectionsSection() {
   // 🎨 AQUÍ PUEDES CAMBIAR EL TAMAÑO DEL TÍTULO "COLECCIONES"
   // Opciones: text-4xl (36px), text-5xl (48px), text-6xl (60px), text-7xl (72px), text-8xl (96px), text-9xl (128px)
-  const tituloSize = "text-0xl"; // 👈 Cambia este valor para ajustar el tamaño del título
+  const tituloSize = "text-3xl"; // 👈 Cambia este valor para ajustar el tamaño del título
 
   // 📍 AQUÍ PUEDES MOVER EL TÍTULO HACIA ABAJO (desde arriba de la pantalla)
   // Opciones: top-16 (64px), top-20 (80px), top-24 (96px), top-32 (128px), top-40 (160px), top-48 (192px)
-  const tituloPosicion = "top-40"; // 👈 Cambia este valor para bajar el título desde arriba
+  const tituloPosicionY = "top-[180px]"; // 👈 Cambia este valor para bajar el título desde arriba
+
+  // ◀️▶️ POSICIÓN HORIZONTAL DEL TÍTULO "COLECCIONES" (valores en píxeles)
+  // ELIGE UNA DE LAS DOS OPCIONES (comenta la que NO uses con //):
+
+  // OPCIÓN 1: Posicionar desde la IZQUIERDA de la pantalla ⬅️
+  const tituloPosicionX = "left-[795px]"; // 👈 Distancia desde el borde IZQUIERDO (ejemplo: left-[50px], left-[200px])
+
+  // OPCIÓN 2: Posicionar desde la DERECHA de la pantalla ➡️
+  // const tituloPosicionX = "right-[100px]"; // 👈 Distancia desde el borde DERECHO (ejemplo: right-[50px], right-[200px])
+
+  // OPCIÓN 3: Centrado (por defecto)
+  // const tituloPosicionX = "left-1/2 -translate-x-1/2"; // 👈 Centrado horizontal perfecto
 
   // 🎨 TAMAÑOS INDIVIDUALES DE LOS LOGOS
   // Opciones: w-32 (128px), w-40 (160px), w-48 (192px), w-56 (224px), w-64 (256px), w-72 (288px), w-80 (320px)
   const logo1Size = "w-20 h-40"; // 👈 Tamaño del logo C3M (izquierda)
-  const logo2Size = "w-20 h-40"; // 👈 Tamaño del logo 2BC (centro)
+  const logo2Size = "w-[100px] h-40"; // 👈 Tamaño del logo 2BC (centro)
   const logo3Size = "w-20 h-40"; // 👈 Tamaño del logo 2BD (derecha)
 
   // 📏 ESPACIO ENTRE LOS LOGOS
@@ -53,10 +65,10 @@ function CollectionsSection() {
     <section className="relative flex-1 flex flex-col items-center justify-center text-center px-8">
 
       {/* Título principal de la sección - POSICIÓN ABSOLUTA */}
-      {/* absolute: se posiciona independiente | left-1/2: centrado horizontal */}
-      {/* -translate-x-1/2: ajusta el centrado perfecto */}
+      {/* absolute: se posiciona independiente */}
+      {/* left-[Xpx] o right-[Xpx]: posición horizontal desde izquierda o derecha */}
       {/* font-bold: negrita | drop-shadow: sombra personalizada */}
-      <h2 className={`absolute ${tituloPosicion} left-1/2 -translate-x-1/2 ${tituloSize} font-bold drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]`}>
+      <h2 className={`absolute ${tituloPosicionY} ${tituloPosicionX} ${tituloSize} font-bold drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]`}>
         Colecciones
       </h2>
 
