@@ -15,19 +15,19 @@ function CollectionsSection() {
 
   // 📍 AQUÍ PUEDES MOVER EL TÍTULO HACIA ABAJO (desde arriba de la pantalla)
   // Opciones: top-16 (64px), top-20 (80px), top-24 (96px), top-32 (128px), top-40 (160px), top-48 (192px)
-  const tituloPosicionY = "top-[180px]"; // 👈 Cambia este valor para bajar el título desde arriba
+  const tituloPosicionY = "top-[105px]"; // 👈 Cambia este valor para bajar el título desde arriba
 
   // ◀️▶️ POSICIÓN HORIZONTAL DEL TÍTULO "COLECCIONES" (valores en píxeles)
   // ELIGE UNA DE LAS DOS OPCIONES (comenta la que NO uses con //):
 
   // OPCIÓN 1: Posicionar desde la IZQUIERDA de la pantalla ⬅️
-  const tituloPosicionX = "left-[795px]"; // 👈 Distancia desde el borde IZQUIERDO (ejemplo: left-[50px], left-[200px])
+  // const tituloPosicionX = "left-[795px]"; // 👈 Distancia desde el borde IZQUIERDO (ejemplo: left-[50px], left-[200px])
 
   // OPCIÓN 2: Posicionar desde la DERECHA de la pantalla ➡️
   // const tituloPosicionX = "right-[100px]"; // 👈 Distancia desde el borde DERECHO (ejemplo: right-[50px], right-[200px])
 
   // OPCIÓN 3: Centrado (por defecto)
-  // const tituloPosicionX = "left-1/2 -translate-x-1/2"; // 👈 Centrado horizontal perfecto
+  const tituloPosicionX = "left-1/2 -translate-x-1/2"; // 👈 Centrado horizontal perfecto
 
   // 🎨 TAMAÑOS INDIVIDUALES DE LOS LOGOS
   // Opciones: w-32 (128px), w-40 (160px), w-48 (192px), w-56 (224px), w-64 (256px), w-72 (288px), w-80 (320px)
@@ -39,20 +39,12 @@ function CollectionsSection() {
   // Opciones: gap-4 (16px), gap-8 (32px), gap-12 (48px), gap-16 (64px), gap-20 (80px), gap-24 (96px)
   const espacioEntreLogos = "gap-5"; // 👈 Espacio entre los logos
 
-  // 🎯 POSICIÓN INDIVIDUAL DEL LOGO 1 (C3M - Izquierda)
-  // Horizontal: -ml-X (izquierda), ml-0 (centro), ml-X (derecha)
+  // 🎯 POSICIÓN VERTICAL INDIVIDUAL DE LOS LOGOS
   // Vertical: -mt-X (arriba), mt-0 (centro), mt-X (abajo)
   // Opciones: 0, 2, 4, 8, 12, 16, 20, 24, 32, 40
-  const logo1PosX = "ml-0"; // 👈 Mover horizontal (- = izquierda, + = derecha)
-  const logo1PosY = "mt-0"; // 👈 Mover vertical (- = arriba, + = abajo)
-
-  // 🎯 POSICIÓN INDIVIDUAL DEL LOGO 2 (2BD BLACKLIST - Centro) ⭐ PRINCIPAL
-  const logo2PosX = "ml-0"; // 👈 Mover horizontal (ml-X derecha, -ml-X izquierda)
-  const logo2PosY = "-mt-4"; // 👈 Mover vertical (-mt-X sube, mt-X baja) | Opciones: -mt-2, -mt-4, -mt-8, -mt-12, -mt-16
-
-  // 🎯 POSICIÓN INDIVIDUAL DEL LOGO 3 (2BD - Derecha)
-  const logo3PosX = "ml-0"; // 👈 Mover horizontal
-  const logo3PosY = "mt-0"; // 👈 Mover vertical
+  const logo1PosY = "mt-0"; // 👈 Mover vertical LOGO 1 (C3M - Izquierda)
+  const logo2PosY = "-mt-4"; // 👈 Mover vertical LOGO 2 (2BD BLACKLIST - Centro) ⭐ PRINCIPAL
+  const logo3PosY = "mt-0"; // 👈 Mover vertical LOGO 3 (2BD - Derecha)
 
   // 📝 POSICIÓN DEL ESLOGAN "MÁS QUE UNA MARCA" (desde ABAJO de la pantalla)
   // Opciones: bottom-4 (16px), bottom-8 (32px), bottom-12 (48px), bottom-16 (64px), bottom-20 (80px), bottom-24 (96px)
@@ -62,7 +54,7 @@ function CollectionsSection() {
     // flex-1: ocupa espacio disponible | flex flex-col: columna vertical
     // items-center: centra horizontalmente | justify-center: centra verticalmente
     // text-center: texto centrado | px-8: padding horizontal 32px | relative: para posicionar el título
-    <section className="relative flex-1 flex flex-col items-center justify-center text-center px-8">
+    <section className="relative flex-1 flex flex-col items-center justify-center text-center px-20">
 
       {/* Título principal de la sección - POSICIÓN ABSOLUTA */}
       {/* absolute: se posiciona independiente */}
@@ -80,21 +72,21 @@ function CollectionsSection() {
         <img
           src="/logos/LOGO2.png"
           alt="2BC"
-          className={`${logo1Size} ${logo1PosX} ${logo1PosY} cursor-pointer transition-transform hover:scale-110 drop-shadow-2xl object-contain`}
+          className={`${logo1Size} ${logo1PosY} cursor-pointer transition-transform hover:scale-110 drop-shadow-2xl object-contain`}
         />
 
         {/* Logo 2: 2BD BLACKLIST con 2 bolitas (Centro) ⭐ PRINCIPAL */}
         <img
           src="/logos/logo3.png"
           alt="2BD BLACKLIST"
-          className={`${logo2Size} ${logo2PosX} ${logo2PosY} cursor-pointer transition-transform hover:scale-110 drop-shadow-2xl object-contain`}
+          className={`${logo2Size} ${logo2PosY} cursor-pointer transition-transform hover:scale-110 drop-shadow-2xl object-contain`}
         />
 
         {/* Logo 3: C3M (Derecha) */}
         <img
           src="/logos/logo4.png"
           alt="C3M"
-          className={`${logo3Size} ${logo3PosX} ${logo3PosY} cursor-pointer transition-transform hover:scale-110 drop-shadow-2xl object-contain`}
+          className={`${logo3Size} ${logo3PosY} cursor-pointer transition-transform hover:scale-110 drop-shadow-2xl object-contain`}
         />
       </div>
 
