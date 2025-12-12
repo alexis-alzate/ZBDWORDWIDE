@@ -11,11 +11,15 @@
 function CollectionsSection() {
   // 🎨 AQUÍ PUEDES CAMBIAR EL TAMAÑO DEL TÍTULO "COLECCIONES"
   // Opciones: text-4xl (36px), text-5xl (48px), text-6xl (60px), text-7xl (72px), text-8xl (96px), text-9xl (128px)
-  const tituloSize = "text-3xl"; // 👈 Cambia este valor para ajustar el tamaño del título
+  const tituloSize = "text-1xl"; // 👈 Cambia este valor para ajustar el tamaño del título
+
+  // 🎨 OPACIDAD DEL TÍTULO "COLECCIONES"
+  // Opciones: opacity-100 (sin transparencia), opacity-90, opacity-80, opacity-70, opacity-60, opacity-50 (muy transparente)
+  const tituloOpacidad = "opacity-70"; // 👈 Cambia este valor para ajustar la transparencia (100 = opaco, 50 = muy transparente)
 
   // 📍 AQUÍ PUEDES MOVER EL TÍTULO HACIA ABAJO (desde arriba de la pantalla)
   // Opciones: top-16 (64px), top-20 (80px), top-24 (96px), top-32 (128px), top-40 (160px), top-48 (192px)
-  const tituloPosicionY = "top-[105px]"; // 👈 Cambia este valor para bajar el título desde arriba
+  const tituloPosicionY = "top-[130px]"; // 👈 Cambia este valor para bajar el título desde arriba
 
   // ◀️▶️ POSICIÓN HORIZONTAL DEL TÍTULO "COLECCIONES" (valores en píxeles)
   // ELIGE UNA DE LAS DOS OPCIONES (comenta la que NO uses con //):
@@ -59,8 +63,8 @@ function CollectionsSection() {
       {/* Título principal de la sección - POSICIÓN ABSOLUTA */}
       {/* absolute: se posiciona independiente */}
       {/* left-[Xpx] o right-[Xpx]: posición horizontal desde izquierda o derecha */}
-      {/* font-bold: negrita | drop-shadow: sombra personalizada */}
-      <h2 className={`absolute ${tituloPosicionY} ${tituloPosicionX} ${tituloSize} font-bold drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]`}>
+      {/* font-bold: negrita | opacity-X: transparencia | drop-shadow: sombra personalizada */}
+      <h2 className={`absolute ${tituloPosicionY} ${tituloPosicionX} ${tituloSize} ${tituloOpacidad} font-bold drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]`}>
         Colecciones
       </h2>
 
@@ -92,9 +96,9 @@ function CollectionsSection() {
 
       {/* Eslogan de la marca - POSICIÓN ABSOLUTA desde abajo */}
       {/* absolute: posición independiente | left-1/2: centrado horizontal | -translate-x-1/2: ajuste de centrado */}
-      {/* text-5xl: 48px | font-bold: negrita | italic: cursiva */}
+      {/* text-3xl: 30px | font-bold: negrita */}
       {/* leading-tight: espaciado ajustado | drop-shadow: sombra negra 90% */}
-      <div className={`absolute ${esloganPosicion} left-1/2 -translate-x-1/2 text-5xl font-bold italic leading-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]`}>
+      <div className={`absolute ${esloganPosicion} left-1/2 -translate-x-1/2 text-3xl font-bold leading-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]`}>
         <p>MÁS QUE UNA</p>
         <p>MARCA</p>
       </div>
