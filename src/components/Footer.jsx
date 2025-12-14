@@ -1,40 +1,51 @@
+import { TEXTOS } from "../constants/data";
+
 /**
  * Componente Footer - Pie de página del sitio web
  *
  * Muestra el mensaje de bienvenida y eslogan de la marca
  * Con efecto de sombra para mejorar legibilidad sobre el fondo
+ *
+ * @param {string} textoIdentidad - Texto del eslogan (opcional, viene de constants/data.js)
+ * @param {string} textoBienvenida - Texto de bienvenida (opcional, viene de constants/data.js)
+ *
+ * 📝 NOTA: Los valores por defecto ahora vienen de src/constants/data.js
+ * Para cambiar los textos, editá ese archivo
  */
-function Footer() {
-  // 📍 POSICIÓN DEL TEXTO "Somos un universo con identidad" (desde ABAJO)
-  // Opciones: bottom-4 (16px), bottom-8 (32px), bottom-12 (48px), bottom-16 (64px), bottom-20 (80px)
-  const textoIdentidadPosicion = "bottom-14"; // 👈 Cambia este valor para mover el texto desde abajo
+export default function Footer({
+  textoIdentidad = TEXTOS.footer.identidad,
+  textoBienvenida = TEXTOS.footer.bienvenida
+}) {
+  // 🎨 VARIABLES DE CONTROL - Cambiá estos valores para personalizar
 
-  // 📍 POSICIÓN DEL TEXTO "Bienvenido a 2BD WORLDWIDE" (desde ABAJO)
-  // Opciones: bottom-4 (16px), bottom-8 (32px), bottom-12 (48px), bottom-16 (64px), bottom-20 (80px)
-  const textoBienvenidaPosicion = "bottom-8"; // 👈 Cambia este valor para mover el texto desde abajo
+  // Distancia respecto a la sección anterior
+  const margenSuperior = "mt-12 sm:mt-16"; // 👈 Ajustá cuánto se separa del contenido anterior
+
+  // Tamaño del eslogan "MÁS QUE UNA MARCA"
+  const esloganSize = "text-2xl sm:text-3xl"; // 👈 Cambia el tamaño del eslogan dentro del footer
+
+  // Tamaño de texto responsive
+  const textoSize = "text-xs sm:text-sm md:text-base"; // 👈 Cambia el tamaño de texto
+
+  // Padding del footer
+  const paddingFooter = "px-6 py-8"; // 👈 Cambia el espacio interno
+
+  // Espaciado entre las dos líneas de texto
+  const espacioTextos = "gap-2"; // 👈 Cambia el espacio entre textos (gap-1, gap-2, gap-3, etc.)
 
   return (
-    // relative: contenedor de referencia para los elementos absolute
-    // text-center: texto centrado | py-6: padding vertical 24px | text-sm: texto pequeño
-    <footer className="relative text-center py-6 text-sm">
+    <footer className={`w-full text-center text-white ${margenSuperior} ${paddingFooter} ${textoSize}`}>
+      <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+        <div className={`${esloganSize} space-y-1 font-bold leading-tight`}>
+          <p>{TEXTOS.colecciones.eslogan.linea1}</p>
+          <p>{TEXTOS.colecciones.eslogan.linea2}</p>
+        </div>
 
-      {/* Texto "Somos un universo con identidad" - POSICIÓN ABSOLUTA */}
-      {/* absolute: se posiciona independiente del flujo normal */}
-      {/* left-1/2 -translate-x-1/2: centrado horizontal perfecto */}
-      {/* bottom-X: distancia desde abajo del footer */}
-      <p className={`absolute ${textoIdentidadPosicion} left-1/2 -translate-x-1/2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]`}>
-        Somos un universo con identidad.
-      </p>
-
-      {/* Texto "Bienvenido a 2BD WORLDWIDE" - POSICIÓN ABSOLUTA */}
-      {/* absolute: se posiciona independiente del flujo normal */}
-      {/* font-bold: texto en negrita para darle más peso visual */}
-      {/* left-1/2 -translate-x-1/2: centrado horizontal perfecto */}
-      <p className={`absolute ${textoBienvenidaPosicion} left-1/2 -translate-x-1/2 font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]`}>
-        Bienvenido a 2BD WORLWIDE
-      </p>
+        <div className={`flex flex-col ${espacioTextos}`}>
+          <p>{textoIdentidad}</p>
+          <p className="font-bold uppercase tracking-[0.2em]">{textoBienvenida}</p>
+        </div>
+      </div>
     </footer>
   );
 }
-
-export default Footer;

@@ -3,16 +3,18 @@ import Header from "./components/Header";
 import CollectionsSection from "./components/CollectionsSection";
 import Footer from "./components/Footer";
 
-function App() {
+export default function App() {
   return (
     <BackgroundCarousel>
-      <div className="flex flex-col h-full text-white">
+      {/* min-h-screen + justify-between reparte el alto entre Header, main y Footer */}
+      <div className="flex min-h-screen flex-col justify-between text-white">
         <Header />
-        <CollectionsSection />
+        {/* flex-1 centra CollectionsSection en el espacio sobrante */}
+        <main className="flex flex-1 items-center justify-center px-4">
+          <CollectionsSection />
+        </main>
         <Footer />
       </div>
     </BackgroundCarousel>
   );
 }
-
-export default App;

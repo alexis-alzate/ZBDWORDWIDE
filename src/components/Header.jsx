@@ -1,3 +1,5 @@
+import { LOGOS, TEXTOS } from "../constants/data";
+
 /**
  * Componente Header - Cabecera principal del sitio web
  *
@@ -5,11 +7,20 @@
  * - Título de la marca a la izquierda
  * - Logo principal centrado
  * - Logo secundario circular a la derecha
+ *
+ * @param {string} logoSrc - Ruta de la imagen del logo principal (opcional, viene de constants/data.js)
+ * @param {string} titulo - Texto del título (opcional, viene de constants/data.js)
+ *
+ * 📝 NOTA: Los valores por defecto ahora vienen de src/constants/data.js
+ * Para cambiar el logo o título, editá ese archivo
  */
-function Header() {
+export default function Header({
+  logoSrc = LOGOS.principal,
+  titulo = TEXTOS.header.titulo
+}) {
   // 🎨 AQUÍ PUEDES CAMBIAR EL TAMAÑO DEL LOGO CENTRAL
-  // Opciones: w-20 (80px), w-24 (96px), w-32 (128px), w-40 (160px), w-48 (192px), w-56 (224px), w-64 (256px)
-  const logoSize = "w-[400px] h-[200px]"; // 👈 Cambia este valor para ajustar el tamaño
+  // Responsive: más pequeño en móvil, más grande en desktop
+  const logoSize = "w-48 h-24 md:w-64 md:h-32 lg:w-96 lg:h-48"; // 👈 Cambia este valor para ajustar el tamaño
 
   // 📏 ALTURA DEL BANNER NEGRO (ancho vertical)
   // Opciones: h-12 (48px), h-16 (64px), h-20 (80px), h-24 (96px), h-28 (112px), h-32 (128px)
@@ -30,8 +41,8 @@ function Header() {
   return (
     // Header con posición relativa para centrar el logo con position absolute
     // flex: layout flexible | justify-between: separa a los extremos | items-center: alinea verticalmente
-    // group: permite usar group-hover en elementos hijos
-    <header className="relative flex justify-between items-center p-8 group">
+    // padding responsive: menos padding en móvil, más en desktop | group: permite usar group-hover en elementos hijos
+    <header className="relative flex justify-between items-center p-4 md:p-6 lg:p-8 group">
 
       {/* Banner negro de fondo - Aparece solo con hover */}
       {/* absolute: posición absoluta | top-0: pegado arriba SIEMPRE | left-0 right-0: ancho completo */}
@@ -44,9 +55,9 @@ function Header() {
 
       {/* Sección Izquierda - Título de la marca */}
       {/* relative z-10: asegura que esté ADELANTE del banner negro */}
-      {/* mt-X o -mt-X: controla posición vertical (arriba/abajo) */}
-      <h1 className={`relative z-10 ${textoPosY} text-3xl font-bold tracking-widest`}>
-        2BD WORDLWIDE
+      {/* text responsive: más pequeño en móvil, más grande en desktop */}
+      <h1 className={`relative z-10 ${textoPosY} text-lg md:text-2xl lg:text-3xl font-bold tracking-widest`}>
+        {titulo}
       </h1>
 
       {/* Sección Centro - Logo principal centrado absolutamente */}
@@ -56,7 +67,7 @@ function Header() {
       {/* mt-X o -mt-X: controla posición vertical adicional (arriba/abajo) */}
       <div className={`absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 ${logoCentralPosY} z-10 ${logoSize}`}>
         <img
-          src="/logos/logo1.PNG"
+          src={logoSrc}
           alt="2BD Logo"
           className="w-full h-full object-contain" // object-contain: mantiene proporción sin recortar
         />
@@ -67,6 +78,4 @@ function Header() {
     </header>
   );
 }
-
-export default Header;
 

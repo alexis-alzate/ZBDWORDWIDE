@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
+import { IMAGE_SETS, CAROUSEL_CONFIG } from "../constants/data";
 
-// Crea SETS de 3 imágenes (cada set será una "slide")
-const imageSets = [
-  ["/2bd/2BD1.JPG", "/2bd/2BD2.JPG", "/2bd/2BD3.JPG"],
-  ["/2bd/2BD4.JPG", "/2bd/2BD5.JPG", "/2bd/2BD6.JPG"],  // ← Agrega más
-  ["/2bd/2BD7.JPG", "/2bd/2BD8.JPG", "/2bd/2BD9.JPG"], // ← Agrega más
-];
+// 📝 EXPLICACIÓN:
+// Ahora las imágenes y configuración vienen de src/constants/data.js
+// Para agregar más imágenes al carrusel, editá ese archivo
 
-function BackgroundCarousel({ children }) {
+export default function BackgroundCarousel({ children }) {
   // Estado para saber qué set de imágenes mostrar
   const [index, setIndex] = useState(0);
 
@@ -16,46 +14,41 @@ function BackgroundCarousel({ children }) {
     // setInterval: ejecuta una función cada X milisegundos
     const id = setInterval(() => {
       // Cambia al siguiente set de imágenes
-      setIndex((prev) => (prev + 1) % imageSets.length);
-      // % imageSets.length: vuelve a 0 cuando llega al final (loop infinito)
-    }, 5000); // 5000ms = 5 segundos
+      setIndex((prev) => (prev + 1) % IMAGE_SETS.length);
+      // % IMAGE_SETS.length: vuelve a 0 cuando llega al final (loop infinito)
+    }, CAROUSEL_CONFIG.intervalo); // Tiempo configurable desde constants/data.js
 
     // Cleanup: limpia el interval cuando el componente se desmonta
     return () => clearInterval(id);
   }, []);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden">
-      
+    <div className="relative w-full min-h-screen overflow-hidden">
       {/* Renderiza TODOS los sets, pero solo uno es visible */}
-      {imageSets.map((imageSet, setIdx) => (
+      {IMAGE_SETS.map((imageSet, setIdx) => (
         <div
           key={setIdx}
-          className={`absolute inset-0 flex transition-opacity duration-1000 ${
+          className={`absolute inset-0 flex flex-col md:flex-row transition-opacity ${
             setIdx === index ? "opacity-100" : "opacity-0"
           }`}
+          style={{ transitionDuration: `${CAROUSEL_CONFIG.duracionTransicion}ms` }}
           // transition-opacity: anima el cambio de opacidad
-          // duration-1000: la transición dura 1 segundo
-          // opacity-100: visible (cuando setIdx === index)
-          // opacity-0: invisible (cuando no es el índice actual)
         >
           {imageSet.map((img, imgIdx) => (
-            <div key={imgIdx} className="w-1/3 h-full">
-              <img 
-                src={img} 
+            <div key={imgIdx} className="flex-1">
+              <img
+                src={img}
                 alt={`Foto ${imgIdx + 1}`}
-                className="w-full h-full object-cover"
+                className="h-full w-full object-cover"
               />
             </div>
           ))}
         </div>
       ))}
 
-      <div className="relative z-[2] h-full">
+      <div className="relative z-[2] flex min-h-screen flex-col">
         {children}
       </div>
     </div>
   );
 }
-
-export default BackgroundCarousel;
