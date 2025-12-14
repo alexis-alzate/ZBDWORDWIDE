@@ -20,7 +20,7 @@ export default function Header({
 }) {
   // 🎨 AQUÍ PUEDES CAMBIAR EL TAMAÑO DEL LOGO CENTRAL
   // Responsive: más pequeño en móvil, más grande en desktop
-  const logoSize = "w-48 h-24 md:w-64 md:h-32 lg:w-96 lg:h-48"; // 👈 Cambia este valor para ajustar el tamaño
+  const logoSize = "w-36 h-16 sm:w-48 sm:h-24 md:w-64 md:h-32 lg:w-96 lg:h-48"; // 👈 Cambia este valor para ajustar el tamaño
 
   // 📏 ALTURA DEL BANNER NEGRO (ancho vertical)
   // Opciones: h-12 (48px), h-16 (64px), h-20 (80px), h-24 (96px), h-28 (112px), h-32 (128px)
@@ -39,10 +39,8 @@ export default function Header({
   const logoCentralPosY = "-mt-[0px]"; // 👈 Cambia el número dentro de los corchetes (ejemplo: -mt-[25px] para subir 25px)
 
   return (
-    // Header con posición relativa para centrar el logo con position absolute
-    // flex: layout flexible | justify-between: separa a los extremos | items-center: alinea verticalmente
-    // padding responsive: menos padding en móvil, más en desktop | group: permite usar group-hover en elementos hijos
-    <header className="relative flex justify-between items-center p-4 md:p-6 lg:p-8 group">
+    // Header con layout adaptable: columna en mobile, fila en desktop
+    <header className="relative flex flex-col items-center gap-3 p-4 text-center md:flex-row md:justify-between md:text-left md:p-6 lg:p-8 group">
 
       {/* Banner negro de fondo - Aparece solo con hover */}
       {/* absolute: posición absoluta | top-0: pegado arriba SIEMPRE | left-0 right-0: ancho completo */}
@@ -56,7 +54,7 @@ export default function Header({
       {/* Sección Izquierda - Título de la marca */}
       {/* relative z-10: asegura que esté ADELANTE del banner negro */}
       {/* text responsive: más pequeño en móvil, más grande en desktop */}
-      <h1 className={`relative z-10 ${textoPosY} text-lg md:text-2xl lg:text-3xl font-bold tracking-widest`}>
+      <h1 className={`relative z-10 ${textoPosY} text-base sm:text-lg md:text-2xl lg:text-3xl font-bold tracking-[0.4em]`}>
         {titulo}
       </h1>
 
@@ -65,7 +63,7 @@ export default function Header({
       {/* transform -translate: centra perfectamente */}
       {/* z-10: asegura que esté ADELANTE del banner negro */}
       {/* mt-X o -mt-X: controla posición vertical adicional (arriba/abajo) */}
-      <div className={`absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 ${logoCentralPosY} z-10 ${logoSize}`}>
+      <div className={`z-10 ${logoSize} ${logoCentralPosY} md:absolute md:left-1/2 md:top-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2`}>
         <img
           src={logoSrc}
           alt="2BD Logo"
@@ -78,4 +76,3 @@ export default function Header({
     </header>
   );
 }
-
