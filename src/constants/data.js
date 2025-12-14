@@ -55,7 +55,7 @@ export const TEXTOS = {
     },
     estilos: {
       // Controla la opacidad y decoraciones del título principal
-      tituloOpacidad: "opacity-80",
+      tituloOpacidad: "opacity-60",
       tituloDecoracion: "inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-6 py-2 uppercase tracking-[0.35em] backdrop-blur-sm"
     }
   }
@@ -67,9 +67,9 @@ export const TEXTOS = {
 // Cada array es un "set" de 3 imágenes que se muestran juntas
 // El carrusel rota entre estos sets cada 5 segundos
 export const IMAGE_SETS = [
-  ["/2bd/2BD1.JPG", "/2bd/2BD2.JPG", "/2bd/2BD3.JPG"],
-  ["/2bd/2BD4.JPG", "/2bd/2BD5.JPG", "/2bd/2BD6.JPG"],
-  ["/2bd/2BD7.JPG", "/2bd/2BD8.JPG", "/2bd/2BD9.JPG"]
+  [ "/2bd/2BD2.JPG", "/2bd/2BD1.JPG", "/2bd/2BD3.JPG"],
+  ["/2bd/2BD4.JPG", "/2bd/2BD5.JPG", "/2bd/2BD6.JPG"],    
+  ["/2bd/2BD7.JPG", "/2bd/2BD8.JPG", "/2bd/2BD9.JPG"]                  
 ];
 
 // ========================================

@@ -22,7 +22,7 @@ export default function CollectionsSection() {
 
   // Tamaño del título "COLECCIONES"
   // Responsive: más pequeño en móvil, más grande en desktop
-  const tituloSize = "text-base sm:text-xl lg:text-2xl"; // 👈 Cambia aquí el tamaño
+  const tituloSize = "text-[10px] sm:text-xs lg:text-sm"; // 👈 Cambia aquí el tamaño
 
   const tituloEstilos = TEXTOS.colecciones.estilos || {};
   // Opacidad del título configurable desde data.js
@@ -39,7 +39,7 @@ export default function CollectionsSection() {
 
   return (
     <section className={`relative flex-1 w-full text-center text-white ${separacionSuperior} ${paddingSeccion}`}>
-      <div className="mx-auto flex max-w-5xl flex-col items-center gap-10">
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-8">
         <h2 className={`${tituloSize} ${tituloOpacidad} ${tituloDecoracion} font-bold drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]`}>
           {TEXTOS.colecciones.titulo}
         </h2>

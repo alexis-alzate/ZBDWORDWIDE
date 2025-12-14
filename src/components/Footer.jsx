@@ -19,7 +19,7 @@ export default function Footer({
   // 🎨 VARIABLES DE CONTROL - Cambiá estos valores para personalizar
 
   // Distancia respecto a la sección anterior
-  const margenSuperior = "mt-12 sm:mt-16"; // 👈 Ajustá cuánto se separa del contenido anterior
+  const margenSuperior = "mt-10 sm:mt-12"; // 👈 Ajustá cuánto se separa del contenido anterior
 
   // Tamaño de texto responsive
   const textoSize = "text-xs sm:text-sm md:text-base"; // 👈 Cambia el tamaño de texto
@@ -35,7 +35,7 @@ export default function Footer({
 
   return (
     <footer className={`w-full text-center text-white ${margenSuperior} ${paddingFooter} ${textoSize}`}>
-      <div className="mx-auto flex max-w-4xl flex-col items-center gap-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+      <div className="mx-auto flex max-w-4xl flex-col items-center gap-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
         <div className={`${esloganSize} font-bold uppercase tracking-[0.2em]`}>
           <p>{TEXTOS.colecciones.eslogan.linea1}</p>
           <p>{TEXTOS.colecciones.eslogan.linea2}</p>
