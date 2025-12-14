@@ -21,11 +21,11 @@ export default function Footer({
   // Distancia respecto a la sección anterior
   const margenSuperior = "mt-12 sm:mt-16"; // 👈 Ajustá cuánto se separa del contenido anterior
 
-  // Tamaño del eslogan "MÁS QUE UNA MARCA"
-  const esloganSize = "text-2xl sm:text-3xl"; // 👈 Cambia el tamaño del eslogan dentro del footer
-
   // Tamaño de texto responsive
   const textoSize = "text-xs sm:text-sm md:text-base"; // 👈 Cambia el tamaño de texto
+
+  // Tamaño del eslogan "MÁS QUE UNA MARCA" (usa misma tipografía que el cuerpo del footer)
+  const esloganSize = textoSize;
 
   // Padding del footer
   const paddingFooter = "px-6 py-8"; // 👈 Cambia el espacio interno
@@ -35,8 +35,8 @@ export default function Footer({
 
   return (
     <footer className={`w-full text-center text-white ${margenSuperior} ${paddingFooter} ${textoSize}`}>
-      <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
-        <div className={`${esloganSize} space-y-1 font-bold leading-tight`}>
+      <div className="mx-auto flex max-w-4xl flex-col items-center gap-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+        <div className={`${esloganSize} font-bold uppercase tracking-[0.2em]`}>
           <p>{TEXTOS.colecciones.eslogan.linea1}</p>
           <p>{TEXTOS.colecciones.eslogan.linea2}</p>
         </div>

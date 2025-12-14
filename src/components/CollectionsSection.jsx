@@ -22,7 +22,7 @@ export default function CollectionsSection() {
 
   // Tamaño del título "COLECCIONES"
   // Responsive: más pequeño en móvil, más grande en desktop
-  const tituloSize = "text-2xl sm:text-3xl lg:text-4xl"; // 👈 Cambia aquí el tamaño
+  const tituloSize = "text-base sm:text-xl lg:text-2xl"; // 👈 Cambia aquí el tamaño
 
   const tituloEstilos = TEXTOS.colecciones.estilos || {};
   // Opacidad del título configurable desde data.js

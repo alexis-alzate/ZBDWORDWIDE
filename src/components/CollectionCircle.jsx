@@ -12,8 +12,8 @@
  */
 export default function CollectionCircle({ logo, name, destacado = false }) {
   // 🎨 Tamaños responsive para que los logos no se salgan en pantallas pequeñas
-  const logoSizeBase = "w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32";
-  const logoSizeDestacado = "w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40";
+  const logoSizeBase = "w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28";
+  const logoSizeDestacado = "w-24 h-24 sm:w-32 sm:h-32 lg:w-36 lg:h-36";
   const logoSize = destacado ? logoSizeDestacado : logoSizeBase;
 
   return (
