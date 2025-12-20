@@ -34,13 +34,18 @@ export default function Footer({
   const espacioTextos = "gap-2"; // 👈 Cambia el espacio entre textos (gap-1, gap-2, gap-3, etc.)
 
   return (
+    // Contenedor principal del footer: ancho completo, texto centrado y blanco
     <footer className={`w-full text-center text-white ${margenSuperior} ${paddingFooter} ${textoSize}`}>
+      {/* Contenedor interno: limita ancho máximo, centra contenido, gap-1 crea el flow visual entre bloques */}
       <div className="mx-auto flex max-w-4xl flex-col items-center gap-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+
+        {/* BLOQUE 1: Eslogan "MÁS QUE UNA MARCA" - bold, uppercase, letras espaciadas */}
         <div className={`${esloganSize} font-bold uppercase tracking-[0.2em]`}>
           <p>{TEXTOS.colecciones.eslogan.linea1}</p>
           <p>{TEXTOS.colecciones.eslogan.linea2}</p>
         </div>
 
+        {/* BLOQUE 2: Textos informativos - "Somos un universo..." y "Bienvenido..." */}
         <div className={`flex flex-col ${espacioTextos}`}>
           <p>{textoIdentidad}</p>
           <p className="font-bold uppercase tracking-[0.2em]">{textoBienvenida}</p>
