@@ -82,13 +82,13 @@ interface Textos {
 export const TEXTOS: Textos = {
     // Textos del Header
     header: {
-        titulo: "2BD WORDLWIDE"
+        titulo: "2BD WORLDWIDE"
     },
 
     // Textos del Footer
     footer: {
         identidad: "Somos un universo con identidad.",
-        bienvenida: "Bienvenido a 2BD WORLWIDE"
+        bienvenida: "Bienvenido a 2BD WORLDWIDE"
     },
 
     // Textos de la sección de colecciones

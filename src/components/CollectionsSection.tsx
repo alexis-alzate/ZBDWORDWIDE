@@ -15,6 +15,10 @@ import { LOGOS, TEXTOS } from "../constants/data";
  * Para cambiar los contenidos, editá ese archivo
  */
 export default function CollectionsSection() {
+    const scrollToBrand = (id: string) => {
+        const element = document.getElementById(id);
+        element?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
     // 🎨 VARIABLES DE CONTROL - Cambiá estos valores para personalizar
 
     // Controla cuánto se separa la sección desde el header
@@ -45,9 +49,22 @@ export default function CollectionsSection() {
                 </h2>
 
                 <div className={`flex w-full flex-wrap items-center justify-center ${espacioLogos}`}>
-                    <CollectionCircle logo={LOGOS.colecciones.bc2} name={TEXTOS.colecciones.nombres.bc2} />
-                    <CollectionCircle logo={LOGOS.colecciones.blacklist} name={TEXTOS.colecciones.nombres.blacklist} destacado />
-                    <CollectionCircle logo={LOGOS.colecciones.c3m} name={TEXTOS.colecciones.nombres.c3m} />
+                    <CollectionCircle
+                        logo={LOGOS.colecciones.bc2}
+                        name={TEXTOS.colecciones.nombres.bc2}
+                        onClick={() => scrollToBrand("brand-bc2")}
+                    />
+                    <CollectionCircle
+                        logo={LOGOS.colecciones.blacklist}
+                        name={TEXTOS.colecciones.nombres.blacklist}
+                        destacado
+                        onClick={() => scrollToBrand("brand-blacklist")}
+                    />
+                    <CollectionCircle
+                        logo={LOGOS.colecciones.c3m}
+                        name={TEXTOS.colecciones.nombres.c3m}
+                        onClick={() => scrollToBrand("brand-c3m")}
+                    />
                 </div>
             </div>
         </section>
