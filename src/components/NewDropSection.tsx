@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BRANDS, PRODUCTS } from "../data/products";
 
 interface ProductCardProps {
@@ -8,27 +9,35 @@ interface ProductCardProps {
 }
 
 function ProductCard({ nombre, imagen, precio, etiqueta }: ProductCardProps) {
+    const [loaded, setLoaded] = useState(false);
+
     return (
         <article className="group relative flex w-full flex-col items-center">
             {etiqueta ? (
-                <span className="absolute left-0 top-0 rounded-sm bg-black px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-white">
+                <span className="absolute left-1/2 -top-10 -translate-x-1/2 rounded-full bg-black px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-white shadow-[0_8px_18px_rgba(0,0,0,0.2)]">
                     {etiqueta}
                 </span>
             ) : null}
-            <div className="flex w-full items-center justify-center">
+            <div className="relative flex w-full items-center justify-center rounded-[28px] bg-white/80 p-6 shadow-[0_18px_40px_rgba(0,0,0,0.08)] transition-transform duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_28px_60px_rgba(0,0,0,0.12)]">
+                {!loaded ? (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="h-40 w-40 rounded-full bg-black/5 blur-2xl" />
+                    </div>
+                ) : null}
+                <div className={`absolute inset-0 rounded-lg bg-black/5 ${loaded ? "opacity-0" : "animate-pulse"}`} />
                 <img
                     src={imagen}
                     alt={nombre}
-                    className="max-h-56 w-full max-w-[220px] object-contain drop-shadow-[0_18px_28px_rgba(0,0,0,0.2)] transition-transform duration-300 group-hover:scale-[1.03]"
+                    loading="lazy"
+                    onLoad={() => setLoaded(true)}
+                    className={`max-h-56 w-full max-w-[220px] object-contain drop-shadow-[0_18px_28px_rgba(0,0,0,0.2)] transition-all duration-500 group-hover:scale-[1.05] ${loaded ? "opacity-100" : "opacity-0"}`}
                 />
             </div>
             <div className="mt-6 text-center">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-black">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-black">
                     {nombre}
                 </p>
-                {precio ? (
-                    <p className="mt-2 text-xs tracking-[0.15em] text-black/70">{precio}</p>
-                ) : null}
+                {precio ? <p className="mt-2 text-xs tracking-[0.15em] text-black/60">{precio}</p> : null}
             </div>
         </article>
     );
@@ -43,7 +52,14 @@ export default function NewDropSection() {
     };
 
     return (
-        <section id="new-drop" className="relative bg-white text-black">
+        <section
+            id="new-drop"
+            className="relative bg-white text-black"
+            style={{
+                background:
+                    "radial-gradient(circle at top, rgba(0,0,0,0.04), rgba(255,255,255,0) 45%)"
+            }}
+        >
             {/* Botón chevron animado */}
             <button
                 onClick={scrollToNewDrop}
@@ -70,7 +86,7 @@ export default function NewDropSection() {
                 id="new-drop-content"
                 className={`mx-auto flex w-full max-w-6xl flex-col items-center px-6 pt-16 ${espacioInferior} sm:px-10 sm:pt-24`}
             >
-                <h2 className="text-2xl font-bold uppercase tracking-[0.4em] sm:text-3xl md:text-4xl">
+                <h2 className="text-2xl font-semibold uppercase tracking-[0.45em] sm:text-3xl md:text-4xl">
                     NEW DROP
                 </h2>
                 {BRANDS.map((brand) => {
@@ -84,12 +100,10 @@ export default function NewDropSection() {
                         <section
                             key={brand.id}
                             id={`brand-${brand.id}`}
-                            className="mt-16 w-full first:mt-12 sm:mt-20"
+                            className="mt-16 w-full border-t border-black/5 pt-10 first:mt-12 first:border-t-0 first:pt-0 sm:mt-20"
                         >
-                            <h3 className="text-xs font-semibold uppercase tracking-[0.45em] text-black/70">
-                                {brand.nombre}
-                            </h3>
-                            <div className="mt-10 grid w-full grid-cols-2 items-end gap-8 sm:grid-cols-3 sm:gap-10 lg:grid-cols-4 lg:gap-12">
+                            <div className="h-6" aria-hidden="true" />
+                            <div className="mt-10 grid w-full grid-cols-2 justify-items-center gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-12">
                                 {productosMarca.map((producto) => (
                                     <ProductCard
                                         key={producto.id}

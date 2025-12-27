@@ -26,7 +26,7 @@ export const PRODUCTS: Product[] = [
         marca: "bc2",
         nombre: "Hoodie Gris",
         precio: "$444.000,00",
-        imagen: "/products/bc2/hoodie-gris.png",
+        imagen: "/products/bc2/1224.png",
         etiqueta: "SOLD OUT"
     },
     {
@@ -34,21 +34,23 @@ export const PRODUCTS: Product[] = [
         marca: "bc2",
         nombre: "Hoodie Negro",
         precio: "$666.000,00",
-        imagen: "/products/bc2/hoodie-negro.png",
+        imagen: "/products/bc2/9ec994b4-b2fb-4cc6-b244-0b36a2a76d61.jpg",
         etiqueta: "SOLD OUT"
     },
     {
-        id: "blacklist-botas",
-        marca: "blacklist",
+        id: "bc2-botas",
+        marca: "bc2",
         nombre: "Botas Negras",
         precio: "$400.000,00",
-        imagen: "/products/blacklist/botas-negras.png"
+        imagen: "/products/bc2/28be0030-7e51-4b5d-9be1-7605790c88e1.jpg",
+        etiqueta: "SOLD OUT"
     },
     {
-        id: "c3m-chaqueta",
-        marca: "c3m",
+        id: "bc2-chaqueta",
+        marca: "bc2",
         nombre: "Chaqueta Negra",
         precio: "$622.000,00",
-        imagen: "/products/c3m/chaqueta-negra.png"
+        imagen: "/products/bc2/366bd7fc-b96e-4003-a521-b642c4d39767.JPG",
+        etiqueta: "SOLD OUT"
     }
 ];
