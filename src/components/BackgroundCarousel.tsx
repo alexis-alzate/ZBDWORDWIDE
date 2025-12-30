@@ -1,52 +1,42 @@
 import { useEffect, useState, ReactNode } from "react";
 import { IMAGE_SETS, CAROUSEL_CONFIG } from "../constants/data";
 
-// 📝 EXPLICACIÓN:
-// Ahora las imágenes y configuración vienen de src/constants/data.js
-// Para agregar más imágenes al carrusel, editá ese archivo
-
 interface BackgroundCarouselProps {
     children: ReactNode;
 }
 
 export default function BackgroundCarousel({ children }: BackgroundCarouselProps) {
-    // Estado para saber qué set de imágenes mostrar
+    // Índice del set visible
     const [index, setIndex] = useState(0);
     const hasImages = IMAGE_SETS.length > 0;
 
-    // useEffect: ejecuta código después de que el componente se monta
     useEffect(() => {
         if (!hasImages) {
             return;
         }
-        // setInterval: ejecuta una función cada X milisegundos
         const id = setInterval(() => {
-            // Cambia al siguiente set de imágenes
             setIndex((prev) => (prev + 1) % IMAGE_SETS.length);
-            // % IMAGE_SETS.length: vuelve a 0 cuando llega al final (loop infinito)
-        }, CAROUSEL_CONFIG.intervalo); // Tiempo configurable desde constants/data.js
+        }, CAROUSEL_CONFIG.intervalo);
 
-        // Cleanup: limpia el interval cuando el componente se desmonta
         return () => clearInterval(id);
     }, [hasImages]);
 
     return (
         <div className="relative w-full min-h-screen overflow-hidden">
-            {/* Renderiza TODOS los sets, pero solo uno es visible */}
+            {/* Capas de fondo rotando por opacidad */}
             {IMAGE_SETS.map((imageSet, setIdx) => (
                 <div
                     key={setIdx}
                     className={`absolute inset-0 flex flex-col md:flex-row transition-opacity ${setIdx === index ? "opacity-100" : "opacity-0"
                         }`}
                     style={{ transitionDuration: `${CAROUSEL_CONFIG.duracionTransicion}ms` }}
-                // transition-opacity: anima el cambio de opacidad
                 >
                     {imageSet.map((img, imgIdx) => (
                         <div key={imgIdx} className="flex-1">
                             <img
                                 src={img}
                                 alt={`Foto ${imgIdx + 1}`}
-                                className="h-full w-full object-cover"
+                                className="kenburns h-full w-full object-cover"
                             />
                         </div>
                     ))}

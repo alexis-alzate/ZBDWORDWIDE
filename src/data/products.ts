@@ -15,12 +15,36 @@ export interface Brand {
 }
 
 export const BRANDS: Brand[] = [
+    { id: "c3m", nombre: "C3M" },
     { id: "bc2", nombre: "2BC" },
-    { id: "blacklist", nombre: "2BD BLACKLIST" },
-    { id: "c3m", nombre: "C3M" }
+    { id: "blacklist", nombre: "2BD BLACKLIST" }
 ];
 
 export const PRODUCTS: Product[] = [
+    {
+        id: "c3m-jesus-saves",
+        marca: "c3m",
+        nombre: "JESUS SAVES",
+        imagen: "/products/c3m/1JESUS SAVES.png"
+    },
+    {
+        id: "c3m-mortal-krumpbuck",
+        marca: "c3m",
+        nombre: "MORTAL KRUMPBUCK",
+        imagen: "/products/c3m/1MORTALKRUMPBUCK.png"
+    },
+    {
+        id: "c3m-bober-buck",
+        marca: "c3m",
+        nombre: "BOBER BUCK",
+        imagen: "/products/c3m/BOBER BUCK.png"
+    },
+    {
+        id: "c3m-iak-camiseta-nude",
+        marca: "c3m",
+        nombre: "IAK CAMISETA NUDE",
+        imagen: "/products/c3m/IAK CAMISETA NUDE.png"
+    },
     {
         id: "bc2-hoodie-gris",
         marca: "bc2",

@@ -60,13 +60,11 @@ export default function NewDropSection() {
                     "radial-gradient(circle at top, rgba(0,0,0,0.04), rgba(255,255,255,0) 45%)"
             }}
         >
-            {/* Botón chevron animado */}
             <button
                 onClick={scrollToNewDrop}
                 className="group absolute left-1/2 top-0 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-[0_8px_20px_rgba(0,0,0,0.18)] transition-all duration-300 hover:scale-110 hover:shadow-[0_12px_28px_rgba(0,0,0,0.25)]"
                 aria-label="Scroll to new drop section"
             >
-                {/* Ícono SVG de chevron-down con animación */}
                 <svg
                     className="h-6 w-6 animate-bounce text-black transition-transform duration-300 group-hover:translate-y-0.5"
                     fill="none"

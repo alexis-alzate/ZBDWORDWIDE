@@ -13,3 +13,23 @@ body {
   margin: 0;
   font-family: var(--font-body);
 }
+
+.kenburns {
+  animation: kenburns 24s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1.01) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.05) translate3d(-1%, -1%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kenburns {
+    animation: none;
+  }
+}
