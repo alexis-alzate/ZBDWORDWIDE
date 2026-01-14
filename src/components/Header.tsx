@@ -1,4 +1,6 @@
 import { LOGOS, TEXTOS } from "../constants/data";
+import HamburgerMenu from "./HamburgerMenu";
+import CartButton from "./CartButton";
 
 interface HeaderProps {
     logoSrc?: string;
@@ -35,6 +37,11 @@ export default function Header({
                     alt="2BD Logo"
                     className="w-full h-full object-contain"
                 />
+            </div>
+
+            <div className="z-10 md:ml-auto flex items-center gap-3">
+                <CartButton />
+                <HamburgerMenu />
             </div>
         </header>
     );

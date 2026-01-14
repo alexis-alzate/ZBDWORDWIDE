@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import CollectionsSection from "./components/CollectionsSection";
 import Footer from "./components/Footer";
 import NewDropSection from "./components/NewDropSection";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 export default function App() {
     return (
@@ -17,6 +18,7 @@ export default function App() {
                 </div>
             </BackgroundCarousel>
             <NewDropSection />
+            <WhatsAppButton />
         </>
     );
 }

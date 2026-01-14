@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { BRANDS, PRODUCTS } from "../data/products";
+import { useEffect, useMemo, useState } from "react";
+import { BRANDS, PRODUCTS, Product } from "../data/products";
+import { fetchWooProducts } from "../services/wooCommerce";
 
 interface ProductCardProps {
     nombre: string;
@@ -45,11 +46,37 @@ function ProductCard({ nombre, imagen, precio, etiqueta }: ProductCardProps) {
 
 export default function NewDropSection() {
     const espacioInferior = "pb-[120vh] sm:pb-[140vh] lg:pb-[160vh]";
+    const [products, setProducts] = useState<Product[]>(PRODUCTS);
 
     const scrollToNewDrop = () => {
         const element = document.getElementById("new-drop-content");
         element?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
+
+    useEffect(() => {
+        let isMounted = true;
+
+        fetchWooProducts()
+            .then((remoteProducts) => {
+                if (isMounted && remoteProducts.length > 0) {
+                    setProducts(remoteProducts);
+                }
+            })
+            .catch(() => {
+                // Fallback silencioso a los productos locales.
+            });
+
+        return () => {
+            isMounted = false;
+        };
+    }, []);
+
+    const productsByBrand = useMemo(() => {
+        return BRANDS.map((brand) => ({
+            brand,
+            products: products.filter((producto) => producto.marca === brand.id)
+        }));
+    }, [products]);
 
     return (
         <section
@@ -87,9 +114,7 @@ export default function NewDropSection() {
                 <h2 className="text-2xl font-semibold uppercase tracking-[0.45em] sm:text-3xl md:text-4xl">
                     NEW DROP
                 </h2>
-                {BRANDS.map((brand) => {
-                    const productosMarca = PRODUCTS.filter((producto) => producto.marca === brand.id);
-
+                {productsByBrand.map(({ brand, products: productosMarca }) => {
                     if (!productosMarca.length) {
                         return null;
                     }

@@ -27,8 +27,9 @@ export default function BackgroundCarousel({ children }: BackgroundCarouselProps
             {IMAGE_SETS.map((imageSet, setIdx) => (
                 <div
                     key={setIdx}
-                    className={`absolute inset-0 flex flex-col md:flex-row transition-opacity ${setIdx === index ? "opacity-100" : "opacity-0"
-                        }`}
+                    className={`absolute inset-0 flex flex-col md:flex-row transition-opacity ${
+                        setIdx === index ? "opacity-100" : "opacity-0"
+                    }`}
                     style={{ transitionDuration: `${CAROUSEL_CONFIG.duracionTransicion}ms` }}
                 >
                     {imageSet.map((img, imgIdx) => (
