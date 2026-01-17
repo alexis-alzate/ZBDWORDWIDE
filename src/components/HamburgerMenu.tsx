@@ -11,13 +11,13 @@ export default function HamburgerMenu() {
                 onClick={() => setOpen((prev) => !prev)}
                 aria-expanded={open}
                 aria-label={TEXTOS.menu.botonAbrir}
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/30 bg-black/40 text-white backdrop-blur transition hover:bg-black/60"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-black/40 text-white backdrop-blur transition hover:bg-black/60 sm:h-12 sm:w-12"
             >
                 <span className="sr-only">{TEXTOS.menu.botonAbrir}</span>
                 <div className="flex flex-col gap-1.5">
-                    <span className={`h-0.5 w-6 bg-white transition ${open ? "translate-y-2 rotate-45" : ""}`} />
-                    <span className={`h-0.5 w-6 bg-white transition ${open ? "opacity-0" : ""}`} />
-                    <span className={`h-0.5 w-6 bg-white transition ${open ? "-translate-y-2 -rotate-45" : ""}`} />
+                    <span className={`h-0.5 w-5 bg-white transition sm:w-6 ${open ? "translate-y-2 rotate-45" : ""}`} />
+                    <span className={`h-0.5 w-5 bg-white transition sm:w-6 ${open ? "opacity-0" : ""}`} />
+                    <span className={`h-0.5 w-5 bg-white transition sm:w-6 ${open ? "-translate-y-2 -rotate-45" : ""}`} />
                 </div>
             </button>
 

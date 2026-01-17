@@ -52,6 +52,7 @@ export interface CollectionsText {
     eslogan: CollectionEslogan;
     nombres: CollectionNames;
     estilos: CollectionStyles;
+    cta: string;
 }
 
 export interface Textos {
@@ -87,7 +88,8 @@ export const TEXTOS: Textos = {
         estilos: {
             tituloOpacidad: "opacity-60",
             tituloDecoracion: "inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-6 py-2 uppercase tracking-[0.35em] backdrop-blur-sm"
-        }
+        },
+        cta: "Explorar drop"
     },
     menu: {
         titulo: "Menú",

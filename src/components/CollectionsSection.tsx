@@ -6,6 +6,11 @@ export default function CollectionsSection() {
         const element = document.getElementById(id);
         element?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
+
+    const scrollToDrop = () => {
+        const element = document.getElementById("new-drop-content");
+        element?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
     // Ajustes visuales rápidos
     const separacionSuperior = "mt-12 sm:mt-16 lg:mt-20";
 
@@ -27,6 +32,14 @@ export default function CollectionsSection() {
                 <h2 className={`${tituloSize} ${tituloOpacidad} ${tituloDecoracion} font-bold drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]`}>
                     {TEXTOS.colecciones.titulo}
                 </h2>
+
+                <button
+                    type="button"
+                    onClick={scrollToDrop}
+                    className="rounded-full border border-white/25 bg-white/10 px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-white backdrop-blur transition hover:bg-white/20"
+                >
+                    {TEXTOS.colecciones.cta}
+                </button>
 
                 {/* Logos de colecciones */}
                 <div className={`flex w-full flex-wrap items-center justify-center ${espacioLogos}`}>
