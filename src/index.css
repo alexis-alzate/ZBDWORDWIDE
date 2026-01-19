@@ -29,7 +29,7 @@ body {
 }
 
 .whatsapp-float {
-  animation: whatsapp-float 3.6s ease-in-out infinite;
+  animation: whatsapp-float 3s cubic-bezier(0.2, 0.9, 0.2, 1) infinite;
 }
 
 @keyframes whatsapp-float {
@@ -37,8 +37,11 @@ body {
   100% {
     transform: translateY(0);
   }
-  50% {
-    transform: translateY(-3px);
+  35% {
+    transform: translateY(-12px);
+  }
+  65% {
+    transform: translateY(4px);
   }
 }
 

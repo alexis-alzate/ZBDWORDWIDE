@@ -52,7 +52,6 @@ export interface CollectionsText {
     eslogan: CollectionEslogan;
     nombres: CollectionNames;
     estilos: CollectionStyles;
-    cta: string;
 }
 
 export interface Textos {
@@ -62,6 +61,7 @@ export interface Textos {
     menu: MenuText;
     whatsapp: WhatsAppText;
     carrito: CartText;
+    buscar: SearchText;
 }
 
 export const TEXTOS: Textos = {
@@ -88,8 +88,7 @@ export const TEXTOS: Textos = {
         estilos: {
             tituloOpacidad: "opacity-60",
             tituloDecoracion: "inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-6 py-2 uppercase tracking-[0.35em] backdrop-blur-sm"
-        },
-        cta: "Explorar drop"
+        }
     },
     menu: {
         titulo: "Menú",
@@ -103,6 +102,9 @@ export const TEXTOS: Textos = {
     },
     carrito: {
         etiqueta: "Carrito de compras"
+    },
+    buscar: {
+        etiqueta: "Buscar productos"
     }
 };
 
@@ -122,6 +124,11 @@ export interface WhatsAppText {
 
 // Carrito
 export interface CartText {
+    etiqueta: string;
+}
+
+// Buscar
+export interface SearchText {
     etiqueta: string;
 }
 

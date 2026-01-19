@@ -15,7 +15,7 @@ export default function WhatsAppButton() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={TEXTOS.whatsapp.etiqueta}
-                className="group relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[#2DE06D] via-[#25D366] to-[#18B955] text-white shadow-[0_22px_50px_rgba(7,94,84,0.45)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_rgba(7,94,84,0.6)]"
+                className="group relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[#2DE06D] via-[#25D366] to-[#18B955] text-white shadow-[0_22px_50px_rgba(7,94,84,0.45)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_rgba(7,94,84,0.6)] whatsapp-float"
             >
                 <span className="absolute -left-2 top-1/2 hidden -translate-x-full -translate-y-1/2 rounded-full bg-black/75 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-white shadow-[0_12px_25px_rgba(0,0,0,0.35)] backdrop-blur-sm group-hover:flex">
                     Escríbenos
@@ -23,7 +23,7 @@ export default function WhatsAppButton() {
                 <span className="absolute inset-0 -z-10 rounded-full bg-[#25D366]/30 blur-2xl" aria-hidden="true" />
                 <span className="absolute inset-0 rounded-full ring-1 ring-white/30" aria-hidden="true" />
                 <svg
-                    className="h-7 w-7 whatsapp-float"
+                    className="h-7 w-7"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                     aria-hidden="true"

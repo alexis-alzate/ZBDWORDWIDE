@@ -1,6 +1,7 @@
 import { LOGOS, TEXTOS } from "../constants/data";
 import HamburgerMenu from "./HamburgerMenu";
 import CartButton from "./CartButton";
+import SearchButton from "./SearchButton";
 
 interface HeaderProps {
     logoSrc?: string;
@@ -27,20 +28,24 @@ export default function Header({
 
             <div className="z-20 flex w-full items-center gap-3 md:hidden">
                 <HamburgerMenu />
-                <h1 className={`relative z-10 flex-1 text-left ${textoPosY} text-base sm:text-lg font-bold tracking-[0.4em]`}>
+                <h1 className={`relative z-10 flex-1 text-left ${textoPosY} text-base sm:text-lg font-bold tracking-[0.2em]`}>
                     {titulo}
                 </h1>
+                <SearchButton />
                 <CartButton />
             </div>
 
             <div className="z-20 hidden w-full items-center justify-between md:flex">
                 <div className="flex items-center gap-4">
                     <HamburgerMenu />
-                    <h1 className={`relative z-10 text-left ${textoPosY} text-2xl lg:text-3xl font-bold tracking-[0.4em]`}>
+                    <h1 className={`relative z-10 text-left ${textoPosY} text-2xl lg:text-3xl font-bold tracking-[0.2em]`}>
                         {titulo}
                     </h1>
                 </div>
-                <CartButton />
+                <div className="flex items-center gap-3">
+                    <SearchButton />
+                    <CartButton />
+                </div>
             </div>
 
             {/* Logo central */}

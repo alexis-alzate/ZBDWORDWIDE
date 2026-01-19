@@ -16,8 +16,8 @@ export interface Brand {
 
 export const BRANDS: Brand[] = [
     { id: "c3m", nombre: "C3M" },
-    { id: "bc2", nombre: "2BC" },
-    { id: "blacklist", nombre: "2BD BLACKLIST" }
+    { id: "blacklist", nombre: "2BD BLACKLIST" },
+    { id: "bc2", nombre: "2BC" }
 ];
 
 export const PRODUCTS: Product[] = [
@@ -75,6 +75,34 @@ export const PRODUCTS: Product[] = [
         nombre: "Chaqueta Negra",
         precio: "$622.000,00",
         imagen: "/products/bc2/366bd7fc-b96e-4003-a521-b642c4d39767.JPG",
+        etiqueta: "SOLD OUT"
+    },
+    {
+        id: "blacklist-mortal-krumpbuck",
+        marca: "blacklist",
+        nombre: "MORTAL KRUMPBUCK",
+        imagen: "/products/blacklist/MORTALKRUMPBUCK.png",
+        etiqueta: "SOLD OUT"
+    },
+    {
+        id: "blacklist-only-buck-camisilla",
+        marca: "blacklist",
+        nombre: "ONLY BUCK CAMISILLA",
+        imagen: "/products/blacklist/Only buck contentCAMISILLA.png",
+        etiqueta: "SOLD OUT"
+    },
+    {
+        id: "blacklist-the-killer-krow",
+        marca: "blacklist",
+        nombre: "THE KILLER KROW",
+        imagen: "/products/blacklist/THE KILLER KROW.png",
+        etiqueta: "SOLD OUT"
+    },
+    {
+        id: "blacklist-we-are-kill-off-ready",
+        marca: "blacklist",
+        nombre: "WE ARE KILL OFF READY",
+        imagen: "/products/blacklist/we are kill off ready.png",
         etiqueta: "SOLD OUT"
     }
 ];
