@@ -1,16 +1,20 @@
 import { useEffect, useMemo, useState } from "react";
 import { BRANDS, PRODUCTS, Product } from "../data/products";
+import { WC_SITE_URL } from "../config/wooCommerce";
 import { fetchWooProducts } from "../services/wooCommerce";
 
 interface ProductCardProps {
+    id: string;
     nombre: string;
     imagen: string;
     precio?: string;
     etiqueta?: string;
 }
 
-function ProductCard({ nombre, imagen, precio, etiqueta }: ProductCardProps) {
+function ProductCard({ id, nombre, imagen, precio, etiqueta }: ProductCardProps) {
     const [loaded, setLoaded] = useState(false);
+    const hasWooId = /^\d+$/.test(id);
+    const addToCartUrl = `${WC_SITE_URL}/?add-to-cart=${id}`;
 
     return (
         <article className="group relative flex w-full flex-col items-center">
@@ -39,6 +43,22 @@ function ProductCard({ nombre, imagen, precio, etiqueta }: ProductCardProps) {
                     {nombre}
                 </p>
                 {precio ? <p className="mt-2 text-xs tracking-[0.15em] text-black/60">{precio}</p> : null}
+                {hasWooId ? (
+                    <a
+                        href={addToCartUrl}
+                        className="mt-4 inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-gradient-to-r from-black via-black/90 to-black/80 px-6 py-2 text-[10px] font-semibold uppercase tracking-[0.32em] text-white shadow-[0_16px_28px_rgba(0,0,0,0.22)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_36px_rgba(0,0,0,0.28)]"
+                    >
+                        Agregar al carrito
+                    </a>
+                ) : (
+                    <button
+                        type="button"
+                        disabled
+                        className="mt-4 inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-black/20 px-6 py-2 text-[10px] font-semibold uppercase tracking-[0.32em] text-black/50 shadow-[0_12px_22px_rgba(0,0,0,0.08)]"
+                    >
+                        Agregar al carrito
+                    </button>
+                )}
             </div>
         </article>
     );
@@ -130,6 +150,7 @@ export default function NewDropSection() {
                                 {productosMarca.map((producto) => (
                                     <ProductCard
                                         key={producto.id}
+                                        id={producto.id}
                                         nombre={producto.nombre}
                                         imagen={producto.imagen}
                                         precio={producto.precio}
