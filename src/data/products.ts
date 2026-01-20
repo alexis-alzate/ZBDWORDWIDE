@@ -15,9 +15,9 @@ export interface Brand {
 }
 
 export const BRANDS: Brand[] = [
+    { id: "bc2", nombre: "2BC" },
     { id: "c3m", nombre: "C3M" },
-    { id: "blacklist", nombre: "2BD BLACKLIST" },
-    { id: "bc2", nombre: "2BC" }
+    { id: "blacklist", nombre: "2BD BLACKLIST" }
 ];
 
 export const PRODUCTS: Product[] = [
