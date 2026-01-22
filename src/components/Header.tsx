@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { LOGOS, TEXTOS } from "../constants/data";
 import HamburgerMenu from "./HamburgerMenu";
 import CartButton from "./CartButton";
@@ -16,15 +17,59 @@ export default function Header({
     const logoSize = "w-36 h-16 sm:w-48 sm:h-24 md:w-64 md:h-32 lg:w-96 lg:h-48";
 
     const bannerAltura = "h-24";
+    const bannerUmbral = 140;
+    const pausaScrollMs = 160;
 
     const textoPosY = "-mt-[0px]";
 
     const logoCentralPosY = "-mt-[0px]";
 
+    const [bannerVisible, setBannerVisible] = useState(true);
+    const ultimoScrollY = useRef(0);
+    const pausaScrollRef = useRef<number | null>(null);
+
+    useEffect(() => {
+        ultimoScrollY.current = window.scrollY;
+
+        const onScroll = () => {
+            const actualY = window.scrollY;
+            const cercaDelTop = actualY <= bannerUmbral;
+            const subiendo = actualY < ultimoScrollY.current;
+
+            if (cercaDelTop || subiendo) {
+                setBannerVisible(true);
+            } else {
+                setBannerVisible(false);
+            }
+
+            ultimoScrollY.current = actualY;
+
+            if (pausaScrollRef.current !== null) {
+                window.clearTimeout(pausaScrollRef.current);
+            }
+
+            pausaScrollRef.current = window.setTimeout(() => {
+                setBannerVisible(true);
+            }, pausaScrollMs);
+        };
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            if (pausaScrollRef.current !== null) {
+                window.clearTimeout(pausaScrollRef.current);
+            }
+        };
+    }, []);
+
     return (
-        <header className="relative flex flex-col items-center gap-3 p-4 text-center md:flex-row md:justify-between md:text-left md:p-6 lg:p-8 group">
-            {/* Banda hover detrás del contenido */}
-            <div className={`absolute top-0 left-0 right-0 ${bannerAltura} bg-black opacity-0 group-hover:opacity-80 transition-opacity duration-300 -z-10`} />
+        <>
+            <div className={bannerAltura} aria-hidden="true" />
+            <header
+                className={`fixed left-0 right-0 top-0 z-50 flex flex-col items-center gap-3 p-4 text-center transition-transform duration-300 ease-out md:flex-row md:justify-between md:text-left md:p-6 lg:p-8 ${bannerVisible ? "translate-y-0" : "-translate-y-full pointer-events-none"}`}
+            >
+                {/* Banda detrás del contenido */}
+                <div className={`absolute top-0 left-0 right-0 ${bannerAltura} bg-black transition-opacity duration-300 ${bannerVisible ? "opacity-80" : "opacity-0"} -z-10`} />
 
             <div className="z-20 flex w-full items-center gap-3 md:hidden">
                 <HamburgerMenu />
@@ -61,6 +106,7 @@ export default function Header({
                 <CartButton />
                 <HamburgerMenu />
             </div>
-        </header>
+            </header>
+        </>
     );
 }

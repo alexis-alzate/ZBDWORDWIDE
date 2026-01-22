@@ -129,7 +129,7 @@ export default function NewDropSection() {
 
             <div
                 id="new-drop-content"
-                className={`mx-auto flex w-full max-w-6xl flex-col items-center px-6 pt-16 ${espacioInferior} sm:px-10 sm:pt-24`}
+                className={`mx-auto flex w-full max-w-6xl flex-col items-center px-6 pt-16 ${espacioInferior} scroll-mt-28 sm:px-10 sm:pt-24`}
             >
                 <h2 className="text-2xl font-semibold uppercase tracking-[0.45em] sm:text-3xl md:text-4xl">
                     NEW DROP
@@ -143,7 +143,7 @@ export default function NewDropSection() {
                         <section
                             key={brand.id}
                             id={`brand-${brand.id}`}
-                            className="mt-16 w-full border-t border-black/5 pt-10 first:mt-12 first:border-t-0 first:pt-0 sm:mt-20"
+                            className="mt-16 w-full scroll-mt-28 border-t border-black/5 pt-10 first:mt-12 first:border-t-0 first:pt-0 sm:mt-20"
                         >
                             <div className="h-6" aria-hidden="true" />
                             <div className="mt-10 grid w-full grid-cols-2 justify-items-center gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-12">

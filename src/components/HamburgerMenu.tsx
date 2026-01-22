@@ -1,11 +1,43 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TEXTOS } from "../constants/data";
 
 export default function HamburgerMenu() {
     const [open, setOpen] = useState(false);
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const panelRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        if (!open) {
+            return;
+        }
+
+        const onKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                setOpen(false);
+            }
+        };
+
+        const onPointerDown = (event: MouseEvent | TouchEvent) => {
+            const target = event.target as Node | null;
+            if (target && containerRef.current && !containerRef.current.contains(target)) {
+                setOpen(false);
+            }
+        };
+
+        document.addEventListener("keydown", onKeyDown);
+        document.addEventListener("mousedown", onPointerDown);
+        document.addEventListener("touchstart", onPointerDown);
+        panelRef.current?.focus();
+
+        return () => {
+            document.removeEventListener("keydown", onKeyDown);
+            document.removeEventListener("mousedown", onPointerDown);
+            document.removeEventListener("touchstart", onPointerDown);
+        };
+    }, [open]);
 
     return (
-        <div className="relative z-20">
+        <div ref={containerRef} className="relative z-20">
             <button
                 type="button"
                 onClick={() => setOpen((prev) => !prev)}
@@ -22,7 +54,11 @@ export default function HamburgerMenu() {
             </button>
 
             {open ? (
-                <div className="absolute right-0 mt-3 w-56 rounded-2xl border border-white/10 bg-black/80 p-4 text-white shadow-[0_18px_40px_rgba(0,0,0,0.35)] backdrop-blur">
+                <div
+                    ref={panelRef}
+                    tabIndex={-1}
+                    className="absolute right-0 mt-3 w-56 rounded-2xl border border-white/10 bg-black/80 p-4 text-white shadow-[0_18px_40px_rgba(0,0,0,0.35)] backdrop-blur"
+                >
                     <p className="text-xs uppercase tracking-[0.25em] text-white/70">{TEXTOS.menu.titulo}</p>
                     <p className="mt-2 text-sm text-white/80">
                         {TEXTOS.menu.placeholder}
